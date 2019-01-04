@@ -8,11 +8,19 @@ import { CarListComponent } from './car-list/car-list.component';
 import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarEditComponent } from './car-edit/car-edit.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { BookChapterListComponent } from './book-chapter-list/book-chapter-list.component';
+import { BookSectionListComponent } from './book-section-list/book-section-list.component';
+import { BookContentListComponent } from './book-content-list/book-content-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     CarListComponent,
-    CarEditComponent
+    CarEditComponent,
+    BookListComponent,
+    BookChapterListComponent,
+    BookSectionListComponent,
+    BookContentListComponent
   ],
   imports: [
     BrowserModule,
