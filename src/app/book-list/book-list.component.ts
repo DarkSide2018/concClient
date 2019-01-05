@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BookService} from "../shared/book.service";
 
 @Component({
   selector: 'app-book-list',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit {
+  book: any;
+  constructor(private bookService: BookService) {
 
-  constructor() { }
+  }
 
   ngOnInit() {
+    this.bookService.getAll().subscribe(data => {
+      this.book = data;
+    });
   }
 
 }
