@@ -9,10 +9,12 @@ import {BookSectionService} from "../shared/book-section.service";
 export class BookSectionListComponent implements OnInit {
 
   bookSections: Array<any>;
-
+  displayDesc = false;
   constructor(private bookSectionService: BookSectionService) {
   }
-
+  showDesc(event){
+    this.displayDesc = !this.displayDesc;
+  }
   ngOnInit() {
     this.bookSectionService.getAll().subscribe(data => {
       this.bookSections = data;

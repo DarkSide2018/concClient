@@ -1,8 +1,18 @@
-<p>
-  book-section-list works!
-</p>
 <div *ngFor="let bookSection of bookSections">
 
-  {{bookSection.title}}
+  <h4>{{bookSection.title}}</h4>
+  <div class="row">
+
+    <button>+</button>
+
+    <button (click)="showDesc($event)">show description</button>
+
+  </div>
+
+<div *ngIf="displayDesc">
+
+  <p>{{bookSection.description}}</p>
+
+</div>
 
 </div>
