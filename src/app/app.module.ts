@@ -12,6 +12,9 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookChapterListComponent } from './book-chapter-list/book-chapter-list.component';
 import { BookSectionListComponent } from './book-section-list/book-section-list.component';
 import { BookContentListComponent } from './book-content-list/book-content-list.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,11 @@ import { BookContentListComponent } from './book-content-list/book-content-list.
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    BrowserModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
