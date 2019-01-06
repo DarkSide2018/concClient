@@ -15,6 +15,10 @@ export class BookSectionListComponent implements OnInit {
   showDesc(event){
     this.displayDesc = !this.displayDesc;
   }
+
+  showContent(event){
+    console.log(event)
+  }
   ngOnInit() {
     this.bookSectionService.getAll().subscribe(data => {
       this.bookSections = data;

@@ -3,7 +3,7 @@
   <h4>{{bookSection.title}}</h4>
   <div class="row">
 
-    <button>+</button>
+    <button (click)="showContent(bookSection.id)">+</button>
 
     <button (click)="showDesc($event)">show description</button>
 
