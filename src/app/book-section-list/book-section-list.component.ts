@@ -9,20 +9,26 @@ import {BookSectionService} from "../shared/book-section.service";
 export class BookSectionListComponent implements OnInit {
 
   bookSections: Array<any>;
+  bookContents: Array<any>;
   displayDesc = false;
   constructor(private bookSectionService: BookSectionService) {
   }
-  showDesc(event){
+  showDesc(){
     this.displayDesc = !this.displayDesc;
   }
-
-  showContent(event){
-    console.log(event)
+  showContent(id){
+    console.log(id);
+    this.bookSectionService.getContentByID(id).subscribe(data => {
+      this.bookContents = data;
+    });
   }
   ngOnInit() {
     this.bookSectionService.getAll().subscribe(data => {
       this.bookSections = data;
     });
+    // this.bookSectionService.getAllContent().subscribe(data => {
+    //   this.bookContents = data;
+    // });
   }
 
 }

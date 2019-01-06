@@ -14,4 +14,12 @@ export class BookSectionService {
 
     return this.http.get('//localhost:8080/bookSection');
   }
+
+  public getAllContent(): Observable<any> {
+
+    return this.http.get('//localhost:8080/bookContent');
+  }
+  public getContentByID(id): Observable<any>{
+    return this.http.get('//localhost:8080/bookSectionById?' + 'id=' + id)
+  }
 }

@@ -13,8 +13,6 @@ export class BookContentListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bookContentService.getAll().subscribe(data => {
-      this.bookContents = data;
-    });
+
   }
 }
