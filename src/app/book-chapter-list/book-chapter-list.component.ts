@@ -11,6 +11,7 @@ export class BookChapterListComponent implements OnInit {
   bookChapters: Array<any>;
 
   constructor(private bookChapterService: BookChapterService) {
+
   }
 
   ngOnInit() {

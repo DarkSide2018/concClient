@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BookSectionService} from "../shared/book-section.service";
 
 @Component({
   selector: 'app-book-section-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookSectionListComponent implements OnInit {
 
-  constructor() { }
+  bookSections: Array<any>;
+
+  constructor(private bookSectionService: BookSectionService) {
+  }
 
   ngOnInit() {
+    this.bookSectionService.getAll().subscribe(data => {
+      this.bookSections = data;
+    });
   }
 
 }
