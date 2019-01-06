@@ -8,9 +8,9 @@ import {BookSectionService} from "../shared/book-section.service";
 })
 export class BookSectionListComponent implements OnInit {
 
-  bookSections: Array<any>;
-  bookContents: Array<any>;
-  displayDesc = false;
+  private bookSections: Array<any>;
+  private bookContents: Array<any>;
+  private displayDesc:boolean = false;
   constructor(private bookSectionService: BookSectionService) {
   }
   showDesc(){
@@ -26,9 +26,6 @@ export class BookSectionListComponent implements OnInit {
     this.bookSectionService.getAll().subscribe(data => {
       this.bookSections = data;
     });
-    // this.bookSectionService.getAllContent().subscribe(data => {
-    //   this.bookContents = data;
-    // });
   }
 
 }
