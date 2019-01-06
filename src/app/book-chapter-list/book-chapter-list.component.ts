@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BookChapterService} from "../shared/book-chapter.service";
 
 @Component({
   selector: 'app-book-chapter-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookChapterListComponent implements OnInit {
 
-  constructor() { }
+  bookChapters: Array<any>;
+
+  constructor(private bookChapterService: BookChapterService) {
+  }
 
   ngOnInit() {
+    this.bookChapterService.getAll().subscribe(data => {
+      this.bookChapters = data;
+    });
   }
 
 }
