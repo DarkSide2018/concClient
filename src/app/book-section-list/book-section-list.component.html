@@ -1,18 +1,17 @@
 <div class="contaner">
   <div class="row">
     <div class="col-md-4">
-      <div *ngFor="let bookSection of bookSections">
-
+      <div *ngFor="let bookSection of bookSections; let i = index">
         <h4>{{bookSection.title}}</h4>
         <div class="row">
 
           <button (click)="showContent(bookSection.id)">+</button>
 
-          <button (click)="showDesc($event)">show description</button>
+          <button (click)="showDesc(i)">show description</button>
 
         </div>
 
-        <div *ngIf="displayDesc">
+        <div *ngIf="checkCondition(i)">
 
           <p>{{bookSection.description}}</p>
 
