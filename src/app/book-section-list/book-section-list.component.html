@@ -1,44 +1,45 @@
 <div class="contaner">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-{{bootstrapCol}}">
+      <button class="sectionTitle">add section</button>
       <div *ngFor="let bookSection of bookSections; let i = index">
+        <div>
+          <hr>
+        </div>
         <p class="sectionTitle">{{bookSection.title}}</p>
-        <div class="row">
+           <div>
+            <button class="sectionTitle" (click)="showContentTitle(bookSection.id)">content</button>
+            <button class="sectionTitle" (click)="showSectionDesc(i)">show description</button>
+          </div>
 
-          <button (click)="showContentTitle(bookSection.id)">+</button>
-
-          <button class="sectionTitle" (click)="showSectionDesc(i)">show description</button>
-
+        <div>
+          <button class="sectionTitle">edit</button>
+          <button class="sectionTitle">delete</button>
         </div>
 
         <div *ngIf="checkSectionCondition(i)">
-
           <p class="sectionDesc">{{bookSection.description}}</p>
-
         </div>
 
       </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-10">
+      <button>add content</button>
       <div *ngFor="let bookContent of bookContents; let i = index">
-
         {{bookContent.title}}
-
         <div>
           <button (click)="showContent(i)">show content</button>
+          <button>edit</button>
+          <button>delete</button>
         </div>
-
-
         <div *ngIf="checkContentCondition(i)">
 
           <p>{{bookContent.content}}</p>
 
         </div>
-
       </div>
     </div>
   </div>
-
 </div>
 
 

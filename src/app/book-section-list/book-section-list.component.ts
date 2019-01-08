@@ -9,6 +9,7 @@ import {BookSectionService} from "../shared/book-section.service";
 export class BookSectionListComponent implements OnInit {
 
   private bookSections: Array<any>;
+  private bootstrapCol: number = 2;
   private bookContents: Array<any> = new Array<any>();
   private displayContent: Array<boolean> = new Array<boolean>();
   // without declaration of array not working
