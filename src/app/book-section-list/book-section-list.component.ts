@@ -9,7 +9,14 @@ import {BookSectionService} from "../shared/book-section.service";
 export class BookSectionListComponent implements OnInit {
 
   private bookSections: Array<any>;
-  private bootstrapCol: number = 2;
+  // так обозначаются константы
+  private readonly firstPosition: number = 2;
+  private readonly lastPosition: number = 10;
+  private readonly maxPosition: number = 13;
+  private readonly minPosition: number = 0;
+  private showSectionComponent: boolean = true;
+  private bootstrapColFirst: number = this.firstPosition;
+  private bootstrapColLast: number = this.lastPosition;
   private bookContents: Array<any> = new Array<any>();
   private displayContent: Array<boolean> = new Array<boolean>();
   // without declaration of array not working
@@ -18,7 +25,22 @@ export class BookSectionListComponent implements OnInit {
   constructor(private bookSectionService: BookSectionService) {
   }
 
+  incSize() {
+    this.bootstrapColFirst = this.maxPosition;
+    this.bootstrapColLast = this.minPosition;
+  }
+
+  incSizeContent() {
+    this.bootstrapColFirst = this.minPosition;
+    this.bootstrapColLast = this.maxPosition;
+  }
+
   showSectionDesc(id) {
+    this.bootstrapColFirst = this.firstPosition;
+    this.bootstrapColLast = this.lastPosition;
+    if (!this.displayDesc[id]) {
+      this.incSize();
+    }
     this.displayDesc[id] = !this.displayDesc[id];
   }
 
@@ -33,6 +55,14 @@ export class BookSectionListComponent implements OnInit {
   }
 
   showContent(id) {
+    this.bootstrapColFirst = this.firstPosition;
+    this.bootstrapColLast = this.lastPosition;
+    if (!this.displayContent[id]) {
+      this.incSizeContent();
+      this.showSectionComponent = false;
+    }else{
+      this.showSectionComponent = true;
+    }
     this.displayContent[id] = !this.displayContent[id];
   }
 

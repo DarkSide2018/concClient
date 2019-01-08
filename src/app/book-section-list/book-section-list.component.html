@@ -1,6 +1,7 @@
 <div class="contaner">
   <div class="row">
-    <div class="col-md-{{bootstrapCol}}">
+
+    <div *ngIf="showSectionComponent" class="col-md-{{bootstrapColFirst}}">
       <button class="sectionTitle">add section</button>
       <div *ngFor="let bookSection of bookSections; let i = index">
         <div>
@@ -9,9 +10,8 @@
         <p class="sectionTitle">{{bookSection.title}}</p>
            <div>
             <button class="sectionTitle" (click)="showContentTitle(bookSection.id)">content</button>
-            <button class="sectionTitle" (click)="showSectionDesc(i)">show description</button>
+             <button class="sectionTitle" (click)="showSectionDesc(i)">show description</button>
           </div>
-
         <div>
           <button class="sectionTitle">edit</button>
           <button class="sectionTitle">delete</button>
@@ -20,10 +20,9 @@
         <div *ngIf="checkSectionCondition(i)">
           <p class="sectionDesc">{{bookSection.description}}</p>
         </div>
-
-      </div>
     </div>
-    <div class="col-md-10">
+    </div>
+    <div class="col-md-{{bootstrapColLast}}">
       <button>add content</button>
       <div *ngFor="let bookContent of bookContents; let i = index">
         {{bookContent.title}}
