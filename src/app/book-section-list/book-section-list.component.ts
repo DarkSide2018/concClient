@@ -9,31 +9,51 @@ import {BookSectionService} from "../shared/book-section.service";
 export class BookSectionListComponent implements OnInit {
 
   private bookSections: Array<any>;
-  private bookContents: Array<any>;
+  private bookContents: Array<any> = new Array<any>();
+  private displayContent: Array<boolean> = new Array<boolean>();
   // without declaration of array not working
-  private displayDesc:  Array<boolean> = new Array<boolean>();
+  private displayDesc: Array<boolean> = new Array<boolean>();
 
   constructor(private bookSectionService: BookSectionService) {
   }
-  showDesc(id){
-   this.displayDesc[id] = !this.displayDesc[id];
+
+  showSectionDesc(id) {
+    this.displayDesc[id] = !this.displayDesc[id];
   }
-  checkCondition(id) : boolean{
+
+  checkSectionCondition(id): boolean {
 
     return this.displayDesc[id]
   }
-  showContent(id){
+
+  checkContentCondition(id): boolean {
+
+    return this.displayContent[id]
+  }
+
+  showContent(id) {
+    this.displayContent[id] = !this.displayContent[id];
+  }
+
+  showContentTitle(id) {
     this.bookSectionService.getContentByID(id).subscribe(data => {
       this.bookContents = data;
     });
+
+    this.displayContent = new Array<boolean>(this.bookContents.length);
+    let i: number;
+    for (i = 0; i < this.displayContent.length; i++) {
+      this.displayContent[i] = false;
+    }
   }
+
   ngOnInit() {
     this.bookSectionService.getAll().subscribe(data => {
       this.bookSections = data;
     });
     this.displayDesc = new Array<boolean>(this.bookSections.length);
-    let i:number;
-    for(i=0;i<this.displayDesc.length;i++) {
+    let i: number;
+    for (i = 0; i < this.displayDesc.length; i++) {
       this.displayDesc[i] = false;
     }
   }

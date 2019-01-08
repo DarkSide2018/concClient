@@ -1,28 +1,39 @@
 <div class="contaner">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div *ngFor="let bookSection of bookSections; let i = index">
-        <h4>{{bookSection.title}}</h4>
+        <p class="sectionTitle">{{bookSection.title}}</p>
         <div class="row">
 
-          <button (click)="showContent(bookSection.id)">+</button>
+          <button (click)="showContentTitle(bookSection.id)">+</button>
 
-          <button (click)="showDesc(i)">show description</button>
+          <button class="sectionTitle" (click)="showSectionDesc(i)">show description</button>
 
         </div>
 
-        <div *ngIf="checkCondition(i)">
+        <div *ngIf="checkSectionCondition(i)">
 
-          <p>{{bookSection.description}}</p>
+          <p class="sectionDesc">{{bookSection.description}}</p>
 
         </div>
 
       </div>
     </div>
-    <div class="col-md-8">
-      <div *ngFor="let bookContent of bookContents">
+    <div class="col-md-9">
+      <div *ngFor="let bookContent of bookContents; let i = index">
 
         {{bookContent.title}}
+
+        <div>
+          <button (click)="showContent(i)">show content</button>
+        </div>
+
+
+        <div *ngIf="checkContentCondition(i)">
+
+          <p>{{bookContent.content}}</p>
+
+        </div>
 
       </div>
     </div>
