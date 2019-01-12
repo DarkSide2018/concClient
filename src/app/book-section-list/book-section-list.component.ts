@@ -9,7 +9,7 @@ import {BookSectionService} from "../shared/book-section.service";
 export class BookSectionListComponent implements OnInit {
 
   private bookSections: Array<any>;
-  // так обозначаются константы
+  // constants definition
   private readonly firstPosition: number = 2;
   private readonly lastPosition: number = 10;
   private readonly maxPosition: number = 13;
@@ -23,6 +23,7 @@ export class BookSectionListComponent implements OnInit {
   private displayDesc: Array<boolean> = new Array<boolean>();
 
   constructor(private bookSectionService: BookSectionService) {
+
   }
 
   incSize() {

@@ -15,6 +15,9 @@ import { BookContentListComponent } from './book-content-list/book-content-list.
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BookChapterEditComponent } from './book-chapter-edit/book-chapter-edit.component';
+import { BookContentEditComponent } from './book-content-edit/book-content-edit.component';
+import { BookSectionEditComponent } from './book-section-edit/book-section-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BookListComponent,
     BookChapterListComponent,
     BookSectionListComponent,
-    BookContentListComponent
+    BookContentListComponent,
+    BookChapterEditComponent,
+    BookContentEditComponent,
+    BookSectionEditComponent
   ],
   imports: [
     BrowserModule,
@@ -44,4 +50,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor() {
+
+  }
+
+
+}
