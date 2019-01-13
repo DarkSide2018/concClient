@@ -1,3 +1,27 @@
 <p>
   book-section-edit works!
 </p>
+<mat-card>
+  <form #bookSectionForm="ngForm" (ngSubmit)="save(bookSectionForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{bookSection.title ? 'Edit' : 'Add'}} BookSection</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field>
+        <input matInput placeholder="BookSection" [(ngModel)]="bookSection.title"
+               required name="name" #name>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!bookSectionForm.form.valid">Save</button>
+      <button mat-raised-button color="secondary" (click)="remove(bookSection.id)"
+              *ngIf="bookSection.id" type="button">Delete</button>
+      <a routerLink="/book-list">Cancel</a>
+    </mat-card-actions>
+    <mat-card-footer>
+
+    </mat-card-footer>
+  </form>
+</mat-card>

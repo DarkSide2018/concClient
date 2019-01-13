@@ -13,7 +13,7 @@
              <button class="sectionTitle" (click)="showSectionDesc(i)">show description</button>
           </div>
         <div>
-          <button class="sectionTitle">edit</button>
+          <a routerLink="/book-section-edit" [queryParams]="{id:bookSection.id}">edit</a>
           <button class="sectionTitle">delete</button>
         </div>
 
