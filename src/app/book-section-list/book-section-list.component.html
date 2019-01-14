@@ -2,19 +2,19 @@
   <div class="row">
 
     <div *ngIf="showSectionComponent" class="col-md-{{bootstrapColFirst}}">
-      <button class="sectionTitle">add section</button>
+      <button class="btn btn-dark">add section</button>
       <div *ngFor="let bookSection of bookSections; let i = index">
         <div>
           <hr>
         </div>
         <p class="sectionTitle">{{bookSection.title}}</p>
            <div>
-            <button class="sectionTitle" (click)="showContentTitle(bookSection.id)">content</button>
-             <button class="sectionTitle" (click)="showSectionDesc(i)">show description</button>
+            <button class="btn btn-dark" (click)="showContentTitle(bookSection.id)">content</button>
+             <button class="btn btn-info" (click)="showSectionDesc(i)">description</button>
           </div>
         <div>
-          <a routerLink="/book-section-edit" [queryParams]="{id:bookSection.id}">edit</a>
-          <button class="sectionTitle">delete</button>
+          <a (click)="hideData()" class="btn btn-outline-secondary" routerLink="/book-section-edit" [queryParams]="{id:bookSection.id}">edit</a>
+          <button class="btn btn-danger">delete</button>
         </div>
 
         <div *ngIf="checkSectionCondition(i)">

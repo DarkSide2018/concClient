@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <span>mat tollbar{{title}}!</span>
 </mat-toolbar>
+  <div *ngIf="showData">
 <app-book-list></app-book-list>
 <div class="container">
   <div class="row">
@@ -11,6 +12,7 @@
       <app-book-section-list></app-book-section-list>
     </div>
   </div>
+</div>
 </div>
 <router-outlet></router-outlet>
 

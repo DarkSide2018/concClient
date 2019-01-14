@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookSectionService} from "../shared/book-section.service";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-book-section-edit',
@@ -15,20 +16,23 @@ export class BookSectionEditComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private bookSectionService: BookSectionService
+              private bookSectionService: BookSectionService,
+              private appComponent:AppComponent
   ) {
   }
-
+  accessData(){
+    this.appComponent.showData = true;
+  }
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
       console.log('params = '+params.id);
-      const id = params['id'];
+      const id = params.id;
       if (id) {
-        this.bookSectionService.getContentByID(id).subscribe((car: any) => {
-          if (car) {
-            this.bookSection = car;
+        this.bookSectionService.getSectionById(id).subscribe((bookSection: any) => {
+          if (bookSection) {
+            this.bookSection = bookSection;
           } else {
-            console.log(`Car with id '${id}' not found, returning to list`);
+            console.log(`BookSection with id '${id}' not found, returning to list`);
             this.gotoList();
           }
         });
@@ -41,7 +45,7 @@ export class BookSectionEditComponent implements OnInit, OnDestroy {
   }
 
   gotoList() {
-    this.router.navigate(['/car-list']);
+    this.router.navigate(['/book-list']);
   }
 
   save(form: NgForm) {

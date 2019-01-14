@@ -17,10 +17,12 @@ export class BookSectionService {
     return this.http.get(this.bookAPI + '/bookSection');
   }
 
-  public getContentByID(id): Observable<any> {
+  public getContentBySectionID(id): Observable<any> {
+    return this.http.get(this.bookAPI + '/bookContentBySectionId?' + 'id=' + id)
+  }
+  public getSectionById(id): Observable<any> {
     return this.http.get(this.bookAPI + '/bookSectionById?' + 'id=' + id)
   }
-
   save(section: any): Observable<any> {
     let result: Observable<Object>;
     if (section['href']) {

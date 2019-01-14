@@ -18,7 +18,7 @@
               [disabled]="!bookSectionForm.form.valid">Save</button>
       <button mat-raised-button color="secondary" (click)="remove(bookSection.id)"
               *ngIf="bookSection.id" type="button">Delete</button>
-      <a routerLink="/book-list">Cancel</a>
+      <a (click)="accessData()" routerLink="/book-list">Cancel</a>
     </mat-card-actions>
     <mat-card-footer>
 

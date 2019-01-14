@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BookService} from "../shared/book.service";
+import {AppVars} from "../appVars";
 
 @Component({
   selector: 'app-book-list',
@@ -9,7 +10,7 @@ import {BookService} from "../shared/book.service";
 export class BookListComponent implements OnInit {
   book: any;
   constructor(private bookService: BookService) {
-
+    AppVars.showData = true;
   }
 
   ngOnInit() {

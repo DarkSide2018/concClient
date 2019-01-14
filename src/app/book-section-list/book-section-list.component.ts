@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BookSectionService} from "../shared/book-section.service";
+import {AppVars} from "../appVars";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-book-section-list',
@@ -22,10 +24,13 @@ export class BookSectionListComponent implements OnInit {
   // without declaration of array not working
   private displayDesc: Array<boolean> = new Array<boolean>();
 
-  constructor(private bookSectionService: BookSectionService) {
+  constructor(private bookSectionService: BookSectionService,
+              private appComponent:AppComponent) {
 
   }
-
+  hideData(){
+    this.appComponent.showData = false;
+  }
   incSize() {
     this.bootstrapColFirst = this.maxPosition;
     this.bootstrapColLast = this.minPosition;
@@ -68,7 +73,7 @@ export class BookSectionListComponent implements OnInit {
   }
 
   showContentTitle(id) {
-    this.bookSectionService.getContentByID(id).subscribe(data => {
+    this.bookSectionService.getContentBySectionID(id).subscribe(data => {
       this.bookContents = data;
     });
 
