@@ -53,10 +53,6 @@ export class BookSectionListComponent implements OnInit {
     this.displayDesc[id] = !this.displayDesc[id];
   }
 
-  showCurrentId(id) {
-    console.log('id=' + id);
-  }
-
   checkSectionCondition(id): boolean {
 
     return this.displayDesc[id]
@@ -67,9 +63,6 @@ export class BookSectionListComponent implements OnInit {
     return this.displayContent[id]
   }
 
-  showEditContent() {
-
-  }
 
   showContent(id) {
     this.bootstrapColFirst = this.firstPosition;

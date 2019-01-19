@@ -21,8 +21,6 @@ import { BookSectionEditComponent } from './book-section-edit/book-section-edit.
 @NgModule({
   declarations: [
     AppComponent,
-    CarListComponent,
-    CarEditComponent,
     BookListComponent,
     BookChapterListComponent,
     BookSectionListComponent,
