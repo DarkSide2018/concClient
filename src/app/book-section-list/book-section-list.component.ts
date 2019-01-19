@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {BookSectionService} from "../shared/book-section.service";
-import {AppVars} from "../appVars";
 import {AppComponent} from "../app.component";
 
 @Component({
@@ -11,6 +10,7 @@ import {AppComponent} from "../app.component";
 export class BookSectionListComponent implements OnInit {
 
   private bookSections: Array<any>;
+  private currentBookSection: number;
   // constants definition
   private readonly firstPosition: number = 2;
   private readonly lastPosition: number = 10;
@@ -25,12 +25,15 @@ export class BookSectionListComponent implements OnInit {
   private displayDesc: Array<boolean> = new Array<boolean>();
 
   constructor(private bookSectionService: BookSectionService,
-              private appComponent:AppComponent) {
+              private appComponent: AppComponent) {
 
   }
-  hideData(){
+
+  hideData() {
+
     this.appComponent.showData = false;
   }
+
   incSize() {
     this.bootstrapColFirst = this.maxPosition;
     this.bootstrapColLast = this.minPosition;
@@ -50,6 +53,10 @@ export class BookSectionListComponent implements OnInit {
     this.displayDesc[id] = !this.displayDesc[id];
   }
 
+  showCurrentId(id) {
+    console.log('id=' + id);
+  }
+
   checkSectionCondition(id): boolean {
 
     return this.displayDesc[id]
@@ -60,19 +67,24 @@ export class BookSectionListComponent implements OnInit {
     return this.displayContent[id]
   }
 
+  showEditContent() {
+
+  }
+
   showContent(id) {
     this.bootstrapColFirst = this.firstPosition;
     this.bootstrapColLast = this.lastPosition;
     if (!this.displayContent[id]) {
       this.incSizeContent();
       this.showSectionComponent = false;
-    }else{
+    } else {
       this.showSectionComponent = true;
     }
     this.displayContent[id] = !this.displayContent[id];
   }
 
   showContentTitle(id) {
+    this.currentBookSection = id;
     this.bookSectionService.getContentBySectionID(id).subscribe(data => {
       this.bookContents = data;
     });

@@ -4,9 +4,14 @@ import { CarListComponent } from './car-list/car-list.component';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import {BookListComponent} from "./book-list/book-list.component";
 import {BookSectionEditComponent} from "./book-section-edit/book-section-edit.component";
+import {BookContentEditComponent} from "./book-content-edit/book-content-edit.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/book-list', pathMatch: 'full' },
+  {
+    path: 'book-content-edit',
+    component: BookContentEditComponent
+  },
   {
     path: 'book-section-edit',
     component: BookSectionEditComponent

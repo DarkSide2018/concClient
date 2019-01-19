@@ -18,14 +18,15 @@ export class BookSectionEditComponent implements OnInit, OnDestroy {
               private router: Router,
               private bookSectionService: BookSectionService,
               private appComponent:AppComponent
-  ) {
+  )
+  {
+    // empty constructor body
   }
   accessData(){
     this.appComponent.showData = true;
   }
   ngOnInit() {
     this.sub = this.route.queryParams.subscribe(params => {
-      console.log('params = '+params.id);
       const id = params.id;
       if (id) {
         this.bookSectionService.getSectionById(id).subscribe((bookSection: any) => {

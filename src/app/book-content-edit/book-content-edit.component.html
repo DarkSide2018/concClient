@@ -1,3 +1,30 @@
-<p>
-  book-content-edit works!
-</p>
+
+<mat-card>
+  <form #bookContentForm="ngForm" (ngSubmit)="save(bookContentForm.value)">
+    <mat-card-header>
+      <mat-card-title><h2>{{bookContent.title ? 'Edit' : 'Add'}} bookContent</h2></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="large50">
+        <input matInput placeholder="bookContent" [(ngModel)]="bookContent.title"
+               required name="contentName" #name>
+      </mat-form-field>
+      <br>
+      <textarea [(ngModel)]="bookContent.content" name="contentData" cols="80" rows="30" #name>
+
+      </textarea>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="!bookContentForm.form.valid">Save
+      </button>
+      <button mat-raised-button color="secondary" (click)="remove(bookContent.id)"
+              *ngIf="bookContent.id" type="button">Delete
+      </button>
+      <a (click)="accessData()" routerLink="/book-list">Cancel</a>
+    </mat-card-actions>
+    <mat-card-footer>
+    </mat-card-footer>
+  </form>
+</mat-card>
+
