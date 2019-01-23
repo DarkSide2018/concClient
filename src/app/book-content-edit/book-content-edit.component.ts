@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AppComponent} from "../app.component";
 import {BookContentService} from "../shared/book-content.service";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-book-content-edit',
@@ -16,7 +16,6 @@ export class BookContentEditComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private bookContentService: BookContentService,
-              private appComponent: AppComponent
   ) {
 
   }
@@ -36,10 +35,16 @@ export class BookContentEditComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   gotoList() {
     this.router.navigate(['/book-list']);
   }
+
   ngOnDestroy(): void {
   }
 
+  saveContent(form: NgForm) {
+    console.log(form);
+   this.bookContentService.saveContent(form);
+  }
 }

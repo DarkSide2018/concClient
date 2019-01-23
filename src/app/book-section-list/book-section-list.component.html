@@ -24,14 +24,14 @@
       </div>
     </div>
     <div class="col-md-{{bootstrapColLast}}">
-      <button>add content</button>
+      <button class="btn btn-outline-secondary">add content</button>
       <div *ngFor="let bookContent of bookContents; let i = index">
         {{bookContent.title}}
         <div>
-          <button (click)="showContent(i)">show content</button>
+          <button class="btn btn-outline-secondary" (click)="showContent(i)">show content</button>
           <a (click)="hideData()" class="btn btn-outline-secondary" routerLink="/book-content-edit"
              [queryParams]="{id:bookContent.id}">edit</a>
-          <button>delete</button>
+          <button class="btn btn-outline-secondary">delete</button>
         </div>
         <div *ngIf="checkContentCondition(i)">
 

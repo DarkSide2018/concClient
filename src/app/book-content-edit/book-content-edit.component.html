@@ -1,16 +1,16 @@
 <div class="container">
   <mat-card>
-    <form #bookContentForm="ngForm" (ngSubmit)="save(bookContentForm.value)">
+    <form #bookContentForm="ngForm" (ngSubmit)="saveContent(bookContentForm.value)">
       <mat-card-header>
         <mat-card-title><h2>{{bookContent.title ? 'Edit' : 'Add'}} bookContent</h2></mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-form-field class="large50">
           <input matInput placeholder="bookContent" [(ngModel)]="bookContent.title"
-                 required name="contentName" #name>
+                 required name="title" #name>
         </mat-form-field>
         <br>
-        <textarea [(ngModel)]="bookContent.content" name="contentData" cols="80" rows="30" #name>
+        <textarea [(ngModel)]="bookContent.content" name="content" cols="80" rows="30" #content>
 
       </textarea>
       </mat-card-content>
