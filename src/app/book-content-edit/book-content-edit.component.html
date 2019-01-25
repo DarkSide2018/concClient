@@ -9,7 +9,10 @@
           <input matInput placeholder="bookContent" [(ngModel)]="bookContent.title"
                  required name="title" #name>
         </mat-form-field>
+        <input matInput placeholder="uid" [(ngModel)]="bookContent.id"
+               required name="id" #uid>
         <br>
+
         <textarea [(ngModel)]="bookContent.content" name="content" cols="80" rows="30" #content>
 
       </textarea>

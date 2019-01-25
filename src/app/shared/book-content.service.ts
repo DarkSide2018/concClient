@@ -29,6 +29,7 @@ export class BookContentService {
     var a: any = {};
     a.title = form.title;
     a.content=form.content;
+    a.id = form.id;
     var jsonString = JSON.stringify(a);
     console.log(jsonString);
     this.http.post('//localhost:8080/bookContent',
