@@ -17,8 +17,7 @@ export class BookContentService {
     return this.http.get(this.bookAPI + '/bookContentById?' + 'id=' + id)
   }
 
-  public saveContent(form: any) : Observable<any> {
-
+  public saveContent(form: any) {
     const headers = new HttpHeaders({
       'Content-Type':'application/json',
       'Access-Control-Allow-Origin':'*',
@@ -26,11 +25,7 @@ export class BookContentService {
       'Access-Control-Allow-Headers':'*'
     });
     let result: Observable<Object>;
-    var a: any = {};
-    a.title = form.title;
-    a.content=form.content;
-    a.id = form.id;
-    var jsonString = JSON.stringify(a);
+    var jsonString = JSON.stringify(form);
     console.log(jsonString);
     this.http.post('//localhost:8080/bookContent',
       jsonString,{headers:headers})
@@ -45,7 +40,5 @@ export class BookContentService {
         () => {
           console.log("The POST observable is now completed.");
         });
-   // result =  this.http.post("//localhost:8080"+'/bookContent',jsonString,{headers:headers});
-    return result;
   }
 }
