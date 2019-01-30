@@ -3,6 +3,7 @@ import {Subscription} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BookContentService} from "../shared/book-content.service";
 import {NgForm} from "@angular/forms";
+import {BookSectionService} from "../shared/book-section.service";
 
 @Component({
   selector: 'app-book-content-edit',
@@ -12,15 +13,20 @@ import {NgForm} from "@angular/forms";
 export class BookContentEditComponent implements OnInit, OnDestroy {
   bookContent: any;
   sub: Subscription;
+  private bookSections: Array<any>;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private bookContentService: BookContentService,
+              private bookSectionService: BookSectionService
   ) {
 
   }
 
   ngOnInit() {
+    this.bookSectionService.getAll().subscribe(data => {
+      this.bookSections = data;
+    });
     this.sub = this.route.queryParams.subscribe(params => {
       const id = params.id;
       if (id) {

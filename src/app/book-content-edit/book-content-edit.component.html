@@ -12,11 +12,15 @@
         <input type="hidden" placeholder="id" [(ngModel)]="bookContent.id"
                required name="id" #id>
         <br>
-        <mat-form-field class="large50">
-          <input matInput placeholder="sectionId" [(ngModel)]="bookContent.sectionId"
-                 required name="sectionId" #sectionId>
-        </mat-form-field>
-        <input type="hidden" placeholder="uuid" [(ngModel)]="bookContent.uid"
+
+        <label>
+          <select name="sectionSelect" ngModel>
+            <option *ngFor="let section of bookSections" [ngValue]="section">
+              {{ section.title }}
+            </option>
+          </select>
+        </label>
+         <input type="hidden" placeholder="uuid" [(ngModel)]="bookContent.uid"
                required name="uid" #uuid>
         <br>
         <textarea [(ngModel)]="bookContent.content" name="content" cols="80" rows="30" #content>
