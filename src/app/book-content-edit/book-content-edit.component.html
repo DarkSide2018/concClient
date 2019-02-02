@@ -12,11 +12,10 @@
         <input type="hidden" placeholder="id" [(ngModel)]="bookContent.id"
                required name="id" #id>
         <br>
-
         <label>
-          <select name="sectionSelect" ngModel>
-            <option *ngFor="let section of bookSections" [ngValue]="section">
-              {{ section.title }}
+          <select name="sectionId" [(ngModel)]="bookContent.sectionId">
+            <option *ngFor="let section of bookSections" value="{{section.uid}}" [ngValue]="section.uid">
+                {{ section.title }}
             </option>
           </select>
         </label>
@@ -24,7 +23,6 @@
                required name="uid" #uuid>
         <br>
         <textarea [(ngModel)]="bookContent.content" name="content" cols="80" rows="30" #content>
-
        </textarea>
       </mat-card-content>
       <mat-card-actions>
