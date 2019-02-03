@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BookSectionService} from "../shared/book-section.service";
 import {AppComponent} from "../app.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-book-section-list',
@@ -25,6 +26,7 @@ export class BookSectionListComponent implements OnInit {
   private displayDesc: Array<boolean> = new Array<boolean>();
 
   constructor(private bookSectionService: BookSectionService,
+              private router: Router,
               private appComponent: AppComponent) {
 
   }
@@ -89,6 +91,13 @@ export class BookSectionListComponent implements OnInit {
     }
   }
 
+  removeContent(uid: any) {
+    console.log("removecontent");
+    this.bookSectionService.removeContent(uid).subscribe(() => {
+      this.gotoList();
+    }, error => console.error(error));
+  }
+
   ngOnInit() {
     this.bookSectionService.getAll().subscribe(data => {
       this.bookSections = data;
@@ -98,5 +107,9 @@ export class BookSectionListComponent implements OnInit {
     for (i = 0; i < this.displayDesc.length; i++) {
       this.displayDesc[i] = false;
     }
+  }
+
+  gotoList() {
+    this.router.navigate(['/book-list']);
   }
 }

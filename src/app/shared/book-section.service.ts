@@ -20,9 +20,11 @@ export class BookSectionService {
   public getContentBySectionID(id): Observable<any> {
     return this.http.get(this.bookAPI + '/bookContentBySectionId?' + 'id=' + id)
   }
+
   public getSectionById(id): Observable<any> {
     return this.http.get(this.bookAPI + '/bookSectionById?' + 'id=' + id)
   }
+
   save(section: any): Observable<any> {
     let result: Observable<Object>;
     if (section['href']) {
@@ -33,8 +35,12 @@ export class BookSectionService {
     return result;
   }
 
+  removeContent(uid: any) {
+    let url = this.bookAPI + "/bookContent/" + uid;
+    return this.http.delete(url);
+  }
+
   remove(href: string) {
-    console.log('href from delete = ' + href);
     return this.http.delete(href);
   }
 }

@@ -15,6 +15,7 @@
         <div>
           <a (click)="hideData()" class="btn btn-outline-secondary" routerLink="/book-section-edit"
              [queryParams]="{id:bookSection.id}">edit</a>
+
           <button class="btn btn-outline-secondary">delete</button>
         </div>
 
@@ -31,7 +32,10 @@
           <button class="btn btn-outline-secondary" (click)="showContent(i)">show content</button>
           <a (click)="hideData()" class="btn btn-outline-secondary" routerLink="/book-content-edit"
              [queryParams]="{id:bookContent.id}">edit</a>
-          <button class="btn btn-outline-secondary">delete</button>
+
+          <a (click)="removeContent(bookContent.id)" class="btn btn-outline-secondary">
+            delete
+          </a>
         </div>
         <div *ngIf="checkContentCondition(i)">
 
