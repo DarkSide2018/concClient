@@ -28,8 +28,8 @@ export class BookContentEditComponent implements OnInit, OnDestroy {
       this.bookSections = data;
     });
     this.sub = this.route.queryParams.subscribe(params => {
+      console.log("routing");
       const id = params.id;
-      if (id) {
         this.bookContentService.getContentById(id).subscribe((bookContent: any) => {
           if (bookContent) {
             this.bookContent = bookContent;
@@ -38,7 +38,6 @@ export class BookContentEditComponent implements OnInit, OnDestroy {
             this.gotoList();
           }
         });
-      }
     });
   }
 

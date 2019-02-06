@@ -12,8 +12,9 @@ export class BookContentService {
   constructor(private http: HttpClient) {
   }
 
-  public getContentById(id): Observable<any> {
-
+   public getContentById(id): Observable<any> {
+    console.log("get content by id");
+    console.log("id = " + id);
     return this.http.get(this.bookAPI + '/bookContentById?' + 'id=' + id)
   }
 

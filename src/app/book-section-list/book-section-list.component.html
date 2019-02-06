@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="col-md-{{bootstrapColLast}}">
-      <button class="btn btn-outline-secondary">add content</button>
+      <a (click)="hideData()"  class="btn btn-outline-secondary" routerLink="/book-content-edit">add content</a>
       <div *ngFor="let bookContent of bookContents; let i = index">
         {{bookContent.title}}
         <div>

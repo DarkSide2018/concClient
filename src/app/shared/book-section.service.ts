@@ -18,6 +18,7 @@ export class BookSectionService {
   }
 
   public getContentBySectionID(id): Observable<any> {
+    console.log("id = " + id);
     return this.http.get(this.bookAPI + '/bookContentBySectionId?' + 'id=' + id)
   }
 
